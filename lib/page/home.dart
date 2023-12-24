@@ -13,18 +13,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Article> newsList = [];
   @override
   void initState() {
-    NewsApiService _service = NewsApiService();
-    _service.getNews();
-    newsList = _service.news;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(

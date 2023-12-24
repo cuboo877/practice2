@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:http/http.dart' as http;
 import 'package:practice2/service/article_model.dart';
 
@@ -28,10 +29,10 @@ class NewsApiService {
     }
   }
 
-  Future<void> getPopularNews({String? q, int? size}) async {
+  Future<void> getPopularNews({String? q, String? size}) async {
     news = [];
     String url =
-        'https://newsapi.org/v2/everything?q=${q ?? "news"}&sortBy=popularity&pageSize=${size ?? 100}&apiKey=$apiKey';
+        'https://newsapi.org/v2/everything?q=${q ?? "news"}&sortBy=popularity&pageSize=${size ?? "10"}&apiKey=$apiKey';
     var response = await http.get(Uri.parse(url));
     var jsonData = json.decode(response.body);
     if (jsonData["status"] == "ok") {
