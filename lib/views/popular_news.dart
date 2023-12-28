@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice2/constant/theme.dart';
+import 'package:practice2/page/newsdetail.dart';
 import 'package:practice2/service/api_service.dart';
 import 'package:practice2/service/article_model.dart';
 
@@ -96,7 +97,9 @@ class _buildStackNewsState extends State<_buildStackNews> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  _buildLookForMoreButton(),
+                  _buildLookForMoreButton(
+                    news: widget.news,
+                  ),
                   Text(
                     "${widget.news.title.substring(0, 35)}...",
                     style: TextStyle(
@@ -135,12 +138,7 @@ class _buildStackNewsState extends State<_buildStackNews> {
 
 //----------------------------------------------------------------------------------------------
 
-class _buildStackSeeMore extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _buildStackSeeMoreState();
-}
-
-class _buildStackSeeMoreState extends State<_buildStackSeeMore> {
+class _buildStackSeeMore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -163,9 +161,7 @@ class _buildStackSeeMoreState extends State<_buildStackSeeMore> {
                   offset: const Offset(0.0, 0.5))
             ]),
             child: GestureDetector(
-              onTap: () {
-                print(1);
-              },
+              onTap: () {},
               child: Container(
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -201,10 +197,18 @@ class _buildStackSeeMoreState extends State<_buildStackSeeMore> {
 //-------------------------------------------------------------------------------------
 
 class _buildLookForMoreButton extends StatelessWidget {
+  final Article news;
+
+  const _buildLookForMoreButton({required this.news});
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => NewsDetailPage(
+                  news: news,
+                )));
+      },
       child: const Row(mainAxisSize: MainAxisSize.min, children: [
         Text(
           "Look for More",
