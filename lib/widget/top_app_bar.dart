@@ -15,9 +15,9 @@ class NavAppBar extends StatelessWidget implements PreferredSizeWidget {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(90),
               bottomRight: Radius.circular(90))),
-      title: Text(
+      title: const Text(
         "Content",
-        style: const TextStyle(
+        style: TextStyle(
           fontFamily: "Consolas",
           color: AppColors.primary,
           fontSize: 20,
@@ -47,29 +47,31 @@ class NavAppBar extends StatelessWidget implements PreferredSizeWidget {
                       content: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(
+                          const Text(
                             "Author",
                             style: TextStyle(
                                 color: AppColors.primary,
                                 fontFamily: "Consolas"),
                           ),
                           Text(
-                            "${news.author}",
-                            style: TextStyle(
+                            news.author,
+                            style: const TextStyle(
                                 color: AppColors.primary,
                                 fontFamily: "Consolas",
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold),
                           ),
-                          Text(
+                          const Text(
                             "Publish At",
                             style: TextStyle(
                                 color: AppColors.primary,
                                 fontFamily: "Consolas"),
                           ),
                           Text(
-                            "${news.publishAt.replaceAll("T", " ").replaceAll("Z", " ")}",
-                            style: TextStyle(
+                            news.publishAt
+                                .replaceAll("T", " ")
+                                .replaceAll("Z", " "),
+                            style: const TextStyle(
                                 color: AppColors.primary,
                                 fontFamily: "Consolas",
                                 fontSize: 20,
@@ -80,7 +82,7 @@ class NavAppBar extends StatelessWidget implements PreferredSizeWidget {
                     );
                   });
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.info_outline,
               color: AppColors.primary,
             ))

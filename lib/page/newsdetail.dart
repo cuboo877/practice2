@@ -6,6 +6,7 @@ import 'package:practice2/widget/top_app_bar.dart';
 class NewsDetailPage extends StatefulWidget {
   const NewsDetailPage({super.key, required this.news});
   final Article news;
+  @override
   State<StatefulWidget> createState() => _NewsDetailPageState();
 }
 

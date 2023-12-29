@@ -33,7 +33,7 @@ class _PopularNewsState extends State<PopularNews> {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: 500,
+      height: 300,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           physics: ClampingScrollPhysics(),
